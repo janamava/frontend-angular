@@ -1,0 +1,44 @@
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile {
+    margin: 15px;
+}
+
+.baddy {
+   background-image: url('../../assets/dual.jpeg');
+   background-repeat: no-repeat;
+   background-size: cover; /*Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges*/
+   height: 100vh;
+}
+video{
+    height:300px;
+    width: 300px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 25px 50px;
+}
+
+nav{
+    align-self:flex-end;
+    padding: 50px;
+
+}
+
+a{
+    margin-left: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+color: greenyellow;
+}
+
+
+
