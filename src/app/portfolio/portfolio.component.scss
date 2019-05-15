@@ -1,44 +1,42 @@
-.top {
-    display: flex;
-    justify-content: space-between;
+.page {
+  height: 100%;
+  background-image: linear-gradient(to right, rgba(11, 85, 85, 0.9), rgba(155, 172, 30, 0.85));
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .profile {
-    margin: 15px;
-}
-
-.baddy {
-   background-image: url('../../assets/dual.jpeg');
-   background-repeat: no-repeat;
-   background-size: cover; /*Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges*/
-   height: 100vh;
-}
-video{
-    height:300px;
-    width: 300px;
+  margin: 15px;
 }
 
 img {
-    width: 100px;
-    height: 100px;
-    border-radius: 25px 50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 25px 50px;
 }
 
-nav{
-    align-self:flex-end;
-    padding: 50px;
-
+.links {
+  position: relative;
 }
 
-a{
-    margin-left: 15px;
-    color: white;
-    text-decoration: none;
+nav {
+  padding: 50px;
+}
+
+a {
+  margin-left: 15px;
+  color: white;
+  text-decoration: none;
 }
 
 a:hover {
-color: greenyellow;
+  color: lightblue;
 }
 
-
-
+video {
+  height: 300px;
+  width: 300px;
+}
