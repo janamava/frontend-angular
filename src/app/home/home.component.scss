@@ -1,0 +1,46 @@
+.page {
+  height: 100%;
+  background-color: lightgoldenrodyellow;
+  display: flex;
+  animation-name: rainbow;
+  animation-duration: 10s;
+}
+
+.greeting {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  animation-name: fadeInLeft;
+  animation-duration: 5s;
+}
+
+@keyframes rainbow {
+  0% {
+    background-color: lightgoldenrodyellow;
+  }
+  25% {
+    background-color: lightblue;
+  }
+  50% {
+    background-color: lightgreen;
+  }
+  100% {
+    background-color: lightgoldenrodyellow;
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/*animations from www3 and https://daneden.github.io/animate.css/ */
