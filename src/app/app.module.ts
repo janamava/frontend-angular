@@ -11,6 +11,7 @@ import { HomeTasksComponent } from './task-manager/home-tasks/home-tasks.compone
 import { ExistingComponent } from './task-manager/existing/existing.component';
 import { FinishedComponent } from './task-manager/finished/finished.component';
 import { HttpClientModule } from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    HttpClientModule
+    HttpClientModule, 
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
