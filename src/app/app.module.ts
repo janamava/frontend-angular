@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { HomeTasksComponent } from './task-manager/home-tasks/home-tasks.component';
 import { ExistingComponent } from './task-manager/existing/existing.component';
 import { FinishedComponent } from './task-manager/finished/finished.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FinishedComponent } from './task-manager/finished/finished.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

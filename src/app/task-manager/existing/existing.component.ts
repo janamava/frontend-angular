@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TasksService } from '../../tasks.service';
+import { Task } from '../../Task';
+
 
 @Component({
   selector: 'app-existing',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExistingComponent implements OnInit {
 
-  constructor() { }
+  tasks: Array<Task>;
+
+  constructor(private tasksService: TasksService) { }
 
   ngOnInit() {
+    this.tasksService.getTasks().subscribe(data => (this.tasks = data));
   }
 
 }
