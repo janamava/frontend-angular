@@ -1,15 +1,13 @@
-<div class="container">
-  <div class="description">
-    <h3>Existing tasks:</h3>
-  </div>
+<div class="description">
+  <h3>Existing tasks:</h3>
 </div>
 
-<ng-container *ngIf="tasks$ | async as tasks">
-  <ul>
-    <li *ngFor="let task of tasks">
-      {{task.description}}
-    </li>
-  </ul>
-
-
-</ng-container>
+<div class="list">
+  <ng-container *ngIf="tasks$ | async as tasks">
+    <ul>
+      <li *ngFor="let task of tasks">
+        {{task.id}}.<span>{{task.description}}</span>
+      </li>
+    </ul>
+  </ng-container>
+</div>

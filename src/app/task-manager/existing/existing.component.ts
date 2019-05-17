@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class ExistingComponent implements OnInit {
 
-  tasks$: Observable <Array<Task>>;
+  tasks$: Observable<Array<Task>>;
 
   constructor(private tasksService: TasksService) { }
 

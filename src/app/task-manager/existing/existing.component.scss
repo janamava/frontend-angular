@@ -1,8 +1,21 @@
-.container {
-    display: flex;
-  }
-  
-  .description {
-    margin: auto;
-    margin-top: 50px;
-  }
+.description {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+li {
+  list-style-type: none;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+span {
+  margin-left: 5px;
+}
