@@ -2,13 +2,14 @@
   <h3>Existing tasks:</h3>
 </div>
 
+
 <div class="list">
-  <ng-container *ngIf="tasks$ | async as tasks">
-    <ul>
-      <li *ngFor="let task of tasks">
-        <span>{{task.description}}</span>
-        <span><input type="checkbox" /></span>
-      </li>
-    </ul>
-  </ng-container>
+  <!-- <ng-container *ngIf="tasks$ | async as tasks"> -->
+  <ul>
+    <li *ngFor="let task of tasks">
+      <span>{{task.description}}</span>
+      <span><input type="checkbox" /></span>
+    </li>
+  </ul>
+  <!-- </ng-container> -->
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Task } from 'src/app/Task';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-home-tasks',
@@ -8,25 +10,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class HomeTasksComponent implements OnInit {
 
+  tasks: Array<Task>[];
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private storage: LocalStorageService) { }
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({
       description: ['', Validators.required],
       status: [false]
     })
-  }
 
+  }
   submit() {
-    if (this.formGroup.valid) {
-      console.log(this.formGroup.value);
+    if (this.storage.retrieve('tasks') === null) {
+      this.storage.store('tasks', [this.formGroup.value]);
     }
     else {
-      console.log("not valid");
-
+      this.tasks = this.storage.retrieve('tasks');
+      this.tasks.push(this.formGroup.value);
+      this.storage.store('tasks', this.tasks);
     }
   }
-
 }

@@ -11,7 +11,9 @@ import { HomeTasksComponent } from './task-manager/home-tasks/home-tasks.compone
 import { ExistingComponent } from './task-manager/existing/existing.component';
 import { FinishedComponent } from './task-manager/finished/finished.component';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+import { TestComponent } from './task-manager/test/test.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +24,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HomeComponent,
     HomeTasksComponent,
     ExistingComponent,
-    FinishedComponent
+    FinishedComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
-    HttpClientModule, 
-    FormsModule, 
-    ReactiveFormsModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxWebstorageModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
