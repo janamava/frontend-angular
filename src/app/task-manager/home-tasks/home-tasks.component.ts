@@ -31,5 +31,7 @@ export class HomeTasksComponent implements OnInit {
       this.tasks.push(this.formGroup.value);
       this.storage.store('tasks', this.tasks);
     }
+    const form = document.getElementsByTagName('form')[0];
+    form.reset();
   }
 }

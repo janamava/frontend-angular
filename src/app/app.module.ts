@@ -13,7 +13,6 @@ import { FinishedComponent } from './task-manager/finished/finished.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxWebstorageModule } from 'ngx-webstorage';
-import { TestComponent } from './task-manager/test/test.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { TestComponent } from './task-manager/test/test.component';
     HomeTasksComponent,
     ExistingComponent,
     FinishedComponent,
-    TestComponent
   ],
   imports: [
     BrowserModule,
