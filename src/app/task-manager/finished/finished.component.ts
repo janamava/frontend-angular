@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../../Task';
 
 @Component({
   selector: 'app-finished',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinishedComponent implements OnInit {
 
+  tasks: Array<Task>[];
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

@@ -13,13 +13,16 @@ const routes: Routes = [
   { path: 'portfolio', component: PortfolioComponent },
   {
     path: 'task-manager', component: TaskManagerComponent, children: [
+      { path: '', redirectTo: 'home-tasks', pathMatch: 'full' },
       { path: 'home-tasks', component: HomeTasksComponent },
       { path: 'existing', component: ExistingComponent },
       { path: 'finished', component: FinishedComponent }
+
     ]
   },
   { path: 'home', component: HomeComponent },
-  // { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
+
 ];
 
 @NgModule({

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../../tasks.service';
 import { Task } from '../../Task';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from 'ngx-webstorage';
 
 
 @Component({
@@ -12,18 +11,13 @@ import { LocalStorageService } from 'ngx-webstorage';
 })
 export class ExistingComponent implements OnInit {
 
-  // tasks$: Observable<Array<Task>>;
-  tasks: Array<Task>[];
+  tasks$: Observable<Array<Task>>;
 
-  constructor(private storage: LocalStorageService) { }
+  constructor(private taskService: TasksService) { }
 
   ngOnInit() {
-    // this.tasks$ = this.tasksService.getTasks();
-  
-    this.retrieve();
-  }
 
-  retrieve(){
-    this.tasks = this.storage.retrieve('tasks');
+    this.tasks$ = this.taskService.getTasks();
+
   }
 }

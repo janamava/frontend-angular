@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class TasksService {
 
-  private url = 'https://my-json-server.typicode.com/janamava/server/tasks';
+  private url = 'http://localhost:3000/tasks';
 
   constructor(private httpClient: HttpClient) { }
 
   getTasks(): Observable<Array<Task>> {
     return this.httpClient.get<Array<Task>>(this.url);
   }
-}
 
+}
 
