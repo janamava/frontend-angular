@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'task-manager', component: TaskManagerComponent, children: [
       { path: '', redirectTo: 'home-tasks', pathMatch: 'full' },
-      { path: 'home-tasks', component: HomeTasksComponent },
+      { path: 'home-tasks', redirectTo: 'task-manager', pathMatch: 'full' },
       { path: 'existing', component: ExistingComponent },
       { path: 'finished', component: FinishedComponent }
 

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Task } from 'src/app/Task';
-import { LocalStorageService } from 'ngx-webstorage';
+import { TasksService } from 'src/app/tasks.service';
 
 @Component({
   selector: 'app-home-tasks',
@@ -10,10 +10,13 @@ import { LocalStorageService } from 'ngx-webstorage';
 })
 export class HomeTasksComponent implements OnInit {
 
+  @Output() addTask = new EventEmitter<Task>();
   tasks: Array<Task>[];
+  newTask: Task;
   formGroup: FormGroup;
+  isValid: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private storage: LocalStorageService) { }
+  constructor(private formBuilder: FormBuilder, private taskService: TasksService) { }
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({
@@ -21,17 +24,17 @@ export class HomeTasksComponent implements OnInit {
       status: [false]
     })
 
+    this.formGroup.valueChanges.subscribe(() => this.isValid = this.formGroup.valid);
   }
+
   submit() {
-    if (this.storage.retrieve('tasks') === null) {
-      this.storage.store('tasks', [this.formGroup.value]);
-    }
-    else {
-      this.tasks = this.storage.retrieve('tasks');
-      this.tasks.push(this.formGroup.value);
-      this.storage.store('tasks', this.tasks);
-    }
-    const form = document.getElementsByTagName('form')[0];
-    form.reset();
+    if (this.formGroup.valid) {
+      this.addTask.emit(this.formGroup.value); 
+      const form = document.getElementsByTagName('form')[0];
+      form.reset();
+    } 
   }
 }
+
+
+   

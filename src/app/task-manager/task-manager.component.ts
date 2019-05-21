@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TasksService } from '../tasks.service';
+import { Task } from '../Task';
 
 @Component({
   selector: 'app-task-manager',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskManagerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private taskService: TasksService) { }
 
   ngOnInit() {
+  }
+
+  addTaskToServer(task: Task) {
+    this.taskService.postTask(task);
 
   }
 }
