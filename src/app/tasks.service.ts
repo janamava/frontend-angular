@@ -25,6 +25,6 @@ export class TasksService {
   }
 
   postTask(task: Task): Observable<Task> {
-    this.httpClient.post<Task>(this.url, task, httpOptions).subscribe
+    this.httpClient.post<Task>(this.url, task, httpOptions).subscribe(data => console.log(data))
   }
 }
