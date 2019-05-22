@@ -24,7 +24,12 @@ export class TasksService {
     return this.httpClient.get<Array<Task>>(this.url);
   }
 
-  postTask(task: Task): Observable<Task> {
-    this.httpClient.post<Task>(this.url, task, httpOptions).subscribe(data => console.log(data))
+  // postTask(task: Task): Observable<Task> {
+  //   // window.location.reload();
+  //   return this.httpClient.post<Task>(this.url, task, httpOptions);
+  // }
+
+  postTask(task: Task): Observable<Task>{
+    return this.httpClient.post<Task>(this.url, task, httpOptions);
   }
 }

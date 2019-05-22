@@ -7,16 +7,10 @@
       <a routerLink='/task-manager/finished'>Finished</a>
     </nav>
 
-    <ul>
-      <li *ngFor="let task of localTasks">
-        {{task.description}}
-      </li>
-    </ul>
-
-  </div >
+  </div>
 
   <app-home-tasks (addTask)="addTaskToServer($event)"></app-home-tasks>
 
   <router-outlet></router-outlet>
-  
+
 </div>
