@@ -2,22 +2,20 @@
   <h3>Existing tasks:</h3>
 </div>
 
-
 <div class="list">
 
   <ng-container *ngIf="tasks$ | async as tasks">
 
     <ul>
       <li *ngFor="let task of tasks">
-        <span>{{task.description}}</span>
-        <span><input type="checkbox" /></span>
+
+        <div *ngIf="task.status === false">
+          <span>{{task.description}}</span>
+          <span><input type="checkbox" (click)="sendTask(task)" /></span>
+        </div>
+
       </li>
     </ul>
   </ng-container>
 
-
-</div>
-
-<div class='submit'>
-  <input type="submit" value="Done"/>
 </div>

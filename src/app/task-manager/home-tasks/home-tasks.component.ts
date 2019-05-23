@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Task } from 'src/app/Task';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-home-tasks',
@@ -29,8 +30,10 @@ export class HomeTasksComponent implements OnInit {
   submit() {
     if (this.formGroup.valid) {
       this.addTask.emit(this.formGroup.value);
-      const form = document.getElementsByTagName('form')[0];
-      form.reset();
+      console.log(this.formGroup.value);
+      
+      // const form = document.getElementsByTagName('form')[0]; sets the status of the object to null
+      // form.reset();
     }
   }
 }

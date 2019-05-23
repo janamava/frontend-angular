@@ -24,12 +24,11 @@ export class TasksService {
     return this.httpClient.get<Array<Task>>(this.url);
   }
 
-  // postTask(task: Task): Observable<Task> {
-  //   // window.location.reload();
-  //   return this.httpClient.post<Task>(this.url, task, httpOptions);
-  // }
-
   postTask(task: Task): Observable<Task>{
     return this.httpClient.post<Task>(this.url, task, httpOptions);
+  }
+
+  putTask(task: Task): Observable<Task>{
+    return this.httpClient.put<Task>(this.url, task, httpOptions);
   }
 }
