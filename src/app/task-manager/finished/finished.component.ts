@@ -22,7 +22,7 @@ export class FinishedComponent implements OnInit {
     this.taskService.putTask(task).subscribe();
   }
 
-  // sendTaskForDeleting(task: Task) {//same here
-  //   this.taskService.deleteTask(task).subscribe();
-  // }
+  sendTaskForDeleting(task: Task): void {//same here
+    this.taskService.deleteTask(task).subscribe();
+  }
 }

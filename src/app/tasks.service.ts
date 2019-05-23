@@ -16,7 +16,7 @@ const httpOptions = {
 })
 export class TasksService {
 
-  private url = 'http://localhost:3000/tasks';
+  private url = 'http://localhost:3020/tasks';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -32,9 +32,10 @@ export class TasksService {
   putTask(task: Task): Observable<Task> {
     return this.httpClient.put<Task>(this.url, task, httpOptions);
   }
-  
-  // deleteTask(){
-  //   return this.httpClient.delete(this.url/task/id)
-  // }
-  //url/task/id or url/delete-task with post
+
+  deleteTask(task: Task): Observable<Task> {
+    const id = task.id;
+    const url = `${this.url}/${id}`;
+    return this.httpClient.delete<Task>(url, httpOptions);
+  }
 }
