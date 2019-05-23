@@ -11,7 +11,7 @@
 
         <div *ngIf="task.status === false">
           <span>{{task.description}}</span>
-          <span><input type="checkbox" (click)="sendTask(task)" /></span>
+          <span><input type="checkbox" (click)="sendTaskForMarking(task)"/></span>
         </div>
 
       </li>

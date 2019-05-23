@@ -10,6 +10,7 @@ const httpOptions = {
 };
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,11 +25,16 @@ export class TasksService {
     return this.httpClient.get<Array<Task>>(this.url);
   }
 
-  postTask(task: Task): Observable<Task>{
+  postTask(task: Task): Observable<Task> {
     return this.httpClient.post<Task>(this.url, task, httpOptions);
   }
 
-  putTask(task: Task): Observable<Task>{
+  putTask(task: Task): Observable<Task> {
     return this.httpClient.put<Task>(this.url, task, httpOptions);
   }
+  
+  // deleteTask(){
+  //   return this.httpClient.delete(this.url/task/id)
+  // }
+  //url/task/id or url/delete-task with post
 }

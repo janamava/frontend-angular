@@ -19,7 +19,7 @@ export class ExistingComponent implements OnInit {
     this.tasks$ = this.taskService.getTasks();
   }
 
-  sendTask(task: Task) {//try to centralise it by using service and emiting in the child component, and parent component sending a task 
+  sendTaskForMarking(task: Task) {//try to centralise it by using service and emiting in the child component, and parent component sending a task 
     this.taskService.putTask(task).subscribe();
   }
 }

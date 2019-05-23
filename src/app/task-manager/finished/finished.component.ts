@@ -15,7 +15,14 @@ export class FinishedComponent implements OnInit {
   constructor(private taskService: TasksService) { }
 
   ngOnInit() {
-    this.tasks$ = this.taskService.getTasks()
+    this.tasks$ = this.taskService.getTasks();
   }
 
+  sendTaskForUnmarking(task: Task) {//move it to the parent comp and unsubscribe and emit task here 
+    this.taskService.putTask(task).subscribe();
+  }
+
+  // sendTaskForDeleting(task: Task) {//same here
+  //   this.taskService.deleteTask(task).subscribe();
+  // }
 }
