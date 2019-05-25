@@ -10,19 +10,29 @@ import { Observable } from 'rxjs';
 })
 export class FinishedComponent implements OnInit {
 
-  tasks$: Observable<Array<Task>>;
+  // tasks$: Observable<Array<Task>>;
+  tasks: Array<Task>;
 
   constructor(private taskService: TasksService) { }
 
   ngOnInit() {
-    this.tasks$ = this.taskService.getTasks();
+    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
   sendTaskForUnmarking(task: Task) {//move it to the parent comp and unsubscribe and emit task here 
-    this.taskService.putTask(task).subscribe();
+    this.taskService.putTask(task).subscribe(res => {
+      if (res.message === "success") {
+        task.status = false;
+      }
+    });
   }
 
-  sendTaskForDeleting(task: Task): void {//same here
-    this.taskService.deleteTask(task).subscribe();
+  sendTaskForDeleting(task: Task) {//same here
+
+    this.taskService.deleteTask(task).subscribe(res => {
+      if (res.message === "success") {
+        this.tasks = this.tasks.filter(item => task.id != item.id);
+      }
+    });
   }
 }

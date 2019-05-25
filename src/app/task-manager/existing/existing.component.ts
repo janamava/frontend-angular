@@ -20,6 +20,10 @@ export class ExistingComponent implements OnInit {
   }
 
   sendTaskForMarking(task: Task) {//try to centralise it by using service and emiting in the child component, and parent component sending a task 
-    this.taskService.putTask(task).subscribe();
+    this.taskService.putTask(task).subscribe(res => {
+      if (res.message === "success") {
+        task.status = true;
+      }
+    });
   }
 }

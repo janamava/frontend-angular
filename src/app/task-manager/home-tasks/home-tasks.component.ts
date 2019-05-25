@@ -30,7 +30,6 @@ export class HomeTasksComponent implements OnInit {
   submit() {
     if (this.formGroup.valid) {
       this.addTask.emit(this.formGroup.value);
-      console.log(this.formGroup.value);
       
       // const form = document.getElementsByTagName('form')[0]; sets the status of the object to null
       // form.reset();

@@ -9,6 +9,7 @@ import { ExistingComponent } from './task-manager/existing/existing.component';
 import { FinishedComponent } from './task-manager/finished/finished.component';
 
 const routes: Routes = [
+
   { path: 'chessboard', component: ChessboardComponent },
   { path: 'portfolio', component: PortfolioComponent },
   {

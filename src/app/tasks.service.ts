@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Task } from './Task';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -9,14 +9,13 @@ const httpOptions = {
   })
 };
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
-  private url = 'http://localhost:3020/tasks';
+  private url = 'http://localhost:3000/tasks';
+  task$: Subscription;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -29,13 +28,15 @@ export class TasksService {
     return this.httpClient.post<Task>(this.url, task, httpOptions);
   }
 
-  putTask(task: Task): Observable<Task> {
-    return this.httpClient.put<Task>(this.url, task, httpOptions);
+  putTask(task: Task): Observable<any> {
+    return this.httpClient.put<any>(this.url, task, httpOptions);
   }
 
-  deleteTask(task: Task): Observable<Task> {
+  deleteTask(task: Task): Observable<any> {
     const id = task.id;
     const url = `${this.url}/${id}`;
-    return this.httpClient.delete<Task>(url, httpOptions);
+    return this.httpClient.delete<any>(url, httpOptions);
   }
 }
+
+
