@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { TasksService } from '../../tasks.service';
 import { Task } from '../../Task';
 import { Observable } from 'rxjs';
@@ -19,7 +19,7 @@ export class ExistingComponent implements OnInit {
     this.tasks$ = this.taskService.getTasks();
   }
 
-  sendTaskForMarking(task: Task) {//try to centralise it by using service and emiting in the child component, and parent component sending a task 
+  sendTaskForMarking(task: Task) {
     this.taskService.putTask(task).subscribe(res => {
       if (res.message === "success") {
         task.status = true;

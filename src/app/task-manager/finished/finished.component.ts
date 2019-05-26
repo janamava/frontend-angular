@@ -19,7 +19,7 @@ export class FinishedComponent implements OnInit {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
-  sendTaskForUnmarking(task: Task) {//move it to the parent comp and unsubscribe and emit task here 
+  sendTaskForUnmarking(task: Task) {
     this.taskService.putTask(task).subscribe(res => {
       if (res.message === "success") {
         task.status = false;
@@ -27,8 +27,7 @@ export class FinishedComponent implements OnInit {
     });
   }
 
-  sendTaskForDeleting(task: Task) {//same here
-
+  sendTaskForDeleting(task: Task) {
     this.taskService.deleteTask(task).subscribe(res => {
       if (res.message === "success") {
         this.tasks = this.tasks.filter(item => task.id != item.id);

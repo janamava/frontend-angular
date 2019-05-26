@@ -11,9 +11,11 @@
     <ul>
       <li *ngFor="let task of tasks">
         <div *ngIf="task.status === true">
+          
           <span>{{task.description}}</span>
-          <span><input type="checkbox" (click)="sendTaskForUnmarking(task)"/></span>
+          <span><input type="checkbox" (change)="sendTaskForUnmarking(task)"/></span>
           <span><button (click)="sendTaskForDeleting(task)">x</button></span>
+
         </div>
       </li>
     </ul>

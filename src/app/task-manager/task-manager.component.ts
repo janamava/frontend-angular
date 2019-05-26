@@ -34,4 +34,6 @@ export class TaskManagerComponent implements OnInit, OnDestroy {
   sendIdToServer(task: Task) {
     this.id$ = this.taskService.putTask(task).subscribe();
   }
+
+  
 }
