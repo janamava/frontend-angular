@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Task } from 'src/app/Task';
 import { TasksService } from 'src/app/tasks.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home-tasks',
@@ -11,8 +11,7 @@ import { TasksService } from 'src/app/tasks.service';
 export class HomeTasksComponent implements OnInit {
 
   // @Output() addTask = new EventEmitter<Task>();
-  tasks: Array<Task>[];
-  newTask: Task;
+  task$: Subscription;
   formGroup: FormGroup;
   isValid: boolean = false;
 
@@ -23,24 +22,21 @@ export class HomeTasksComponent implements OnInit {
       description: ['', Validators.required],
       status: [false]
     })
-
+    
     this.formGroup.valueChanges.subscribe(() => this.isValid = this.formGroup.valid);
   }
 
-  submit() {
-    if (this.formGroup.valid) {    
-      this.taskService.postTask(this.formGroup.value).subscribe();
+  ngOnDestroy(): void {
+    if (this.task$ !== undefined) {
+      this.task$.unsubscribe();
     }
   }
+
+  sendNewTask() {
+    if (this.formGroup.valid) {
+      this.task$ = this.taskService.postTask(this.formGroup.value).subscribe();
+    }
+    // const form = document.getElementsByTagName('form')[0]; sets the status of the object to null
+    // form.reset();
+  }
 }
-
-  // submit() {
-  //   if (this.formGroup.valid) {
-  //     this.addTask.emit(this.formGroup.value);
-      
-  //     // const form = document.getElementsByTagName('form')[0]; sets the status of the object to null
-  //     // form.reset();
-  //   }
-  // }
-
-

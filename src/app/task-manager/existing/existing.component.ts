@@ -1,7 +1,7 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../../tasks.service';
 import { Task } from '../../Task';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class ExistingComponent implements OnInit {
 
+  task$: Subscription;
   tasks$: Observable<Array<Task>>;
 
   constructor(private taskService: TasksService) { }
@@ -19,8 +20,14 @@ export class ExistingComponent implements OnInit {
     this.tasks$ = this.taskService.getTasks();
   }
 
+  ngOnDestroy(): void {
+    if (this.task$ !== undefined) {     
+      this.task$.unsubscribe();
+    }
+  }
+
   sendTaskForMarking(task: Task) {
-    this.taskService.putTask(task).subscribe(res => {
+    this.task$ = this.taskService.putTask(task).subscribe(res => {
       if (res.message === "success") {
         task.status = true;
       }

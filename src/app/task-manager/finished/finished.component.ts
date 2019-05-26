@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../Task';
 import { TasksService } from 'src/app/tasks.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-finished',
@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class FinishedComponent implements OnInit {
 
   // tasks$: Observable<Array<Task>>;
+  task$: Subscription;
   tasks: Array<Task>;
 
   constructor(private taskService: TasksService) { }
@@ -19,8 +20,14 @@ export class FinishedComponent implements OnInit {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
+  ngOnDestroy(): void {
+    if (this.task$ !== undefined) {
+      this.task$.unsubscribe();
+    }
+  }
+
   sendTaskForUnmarking(task: Task) {
-    this.taskService.putTask(task).subscribe(res => {
+    this.task$ = this.taskService.putTask(task).subscribe(res => {
       if (res.message === "success") {
         task.status = false;
       }
@@ -28,7 +35,7 @@ export class FinishedComponent implements OnInit {
   }
 
   sendTaskForDeleting(task: Task) {
-    this.taskService.deleteTask(task).subscribe(res => {
+    this.task$ = this.taskService.deleteTask(task).subscribe(res => {
       if (res.message === "success") {
         this.tasks = this.tasks.filter(item => task.id != item.id);
       }
